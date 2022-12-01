@@ -19,6 +19,11 @@
 typedef unsigned long long DigitType;
 typedef unsigned char      LabelType;
 
+typedef enum
+{
+    true=1, false=0
+}bool;
+
 //#ifdef OCL
 //  #include <string>
 //  // target device
