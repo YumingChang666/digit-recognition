@@ -14,13 +14,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <getopt.h>
-//#include <string>
 #include <time.h>
 #include <sys/time.h>
 
-#ifdef SW
 # include "../sw/digitrec_sw.h"
-#endif
 
 // other headers
 #include "utils.h"
@@ -44,15 +41,13 @@ int main(int argc, char ** argv)
     struct timeval start, end;
 
     // sw version host code
-#ifdef SW
     // create space for the result
-    LabelType* result = new LabelType[NUM_TEST];
+    LabelType* result = (LabelType*)malloc (sizeof(LabelType)*NUM_TEST);
 
     // software version
     gettimeofday(&start, NULL);
     DigitRec_sw(training_data, testing_data, result);
     gettimeofday(&end, NULL);
-#endif
 
     // check results
     printf("Checking results:\n");
@@ -63,9 +58,7 @@ int main(int argc, char ** argv)
     printf("elapsed time: %lld us\n", elapsed);
 
     // cleanup
-#ifdef SW
-    delete []result;
-#endif
+    free(result);
 
     return EXIT_SUCCESS;
 

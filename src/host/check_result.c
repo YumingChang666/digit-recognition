@@ -5,8 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "typedefs.h"
-//#include <fstream>
-//#include <iostream>
+
 
 void check_results(LabelType* result, const LabelType* expected, int cnt)
 {

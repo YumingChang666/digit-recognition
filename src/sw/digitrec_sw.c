@@ -98,23 +98,23 @@ void DigitRec_sw(const DigitType training_set[NUM_TRAINING * DIGIT_WIDTH],
 
     // loop through test set
     TEST_LOOP: for (int t = 0; t < NUM_TEST; ++t)
-{
+    {
     // Initialize the neighbor set
-    SET_KNN_SET: for ( int i = 0; i < K_CONST; ++i )
-{
-    // Note that the max distance is 256
-    dists[i] = 256;
-    labels[i] = 0;
-}
+        SET_KNN_SET: for ( int i = 0; i < K_CONST; ++i )
+        {
+            // Note that the max distance is 256
+            dists[i] = 256;
+            labels[i] = 0;
+        }
 
-    // for each training instance, compare it with the test instance, and update the nearest neighbor set
-    TRAINING_LOOP : for ( int i = 0; i < NUM_TRAINING; ++i )
-    update_knn(&training_set[i * DIGIT_WIDTH], &test_set[t * DIGIT_WIDTH], dists, labels, i / CLASS_SIZE);
+        // for each training instance, compare it with the test instance, and update the nearest neighbor set
+        TRAINING_LOOP : for ( int i = 0; i < NUM_TRAINING; ++i )
+        update_knn(&training_set[i * DIGIT_WIDTH], &test_set[t * DIGIT_WIDTH], dists, labels, i / CLASS_SIZE);
 
-    // Compute the final output
-    LabelType max_vote = knn_vote(labels);
-    results[t] = max_vote;
+        // Compute the final output
+        LabelType max_vote = knn_vote(labels);
+        results[t] = max_vote;
 
-}
+    }
 
 }

@@ -19,19 +19,6 @@
 typedef unsigned long long DigitType;
 typedef unsigned char      LabelType;
 
-//#ifdef OCL
-//  #include <string>
-//  // target device
-//  // change here to map to a different device
-//  const std::string TARGET_DEVICE = "xilinx_aws-vu9p-f1-04261818_dynamic_5_0";
-//#endif
-//
-//#ifdef SDSOC
-//  #include "ap_int.h"
-//  // sdsoc wide vector type
-//  typedef ap_uint<256>  WholeDigitType;
-//#endif
-
 // parameters
 #define K_CONST 3
 #define PAR_FACTOR 40
